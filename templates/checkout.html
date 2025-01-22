@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+    <title>Checkout page</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+
+    <div class="row1">
+        <h2>Checkout</h2>
+        <form action="" method="POST" id="form">
+            {% csrf_token %}
+        <div class="row1Inside">            
+            <div class="row1Col1">
+                <p>Fill out the form</p>
+                <input type="text" name="name" placeholder="Full Name" id="name" required>
+                <input type="email" name="email" placeholder="Email here" id="email" required>
+                <input type="text" name="address1" placeholder="Address line1" id="address1" required>
+                <input type="text" name="address2" placeholder="Address line2" id="address2" required>
+                <input type="number" name="phone" placeholder="Phone number" id="phone" required>
+                <textarea name="message" id="" cols="30" rows="10" id="message" placeholder="Write some addional message here"></textarea>
+            </div>
+            <div class="row1Col2">
+                <div class="deliveryCard">Delivery method</div>
+                <div class="deliveryCard"><input type="radio" id="cashondelivery" checked name="delivery" value="Cash on delivery">Cash On Delivery</div>
+                <div class="deliveryCard"><input type="radio" id="onlinepayment" name="delivery" value="Online Payment">Online Payment</div>
+            </div>
+        </div>
+
+        <div class="row2Inside">
+            <h2>Order Information</h2>
+            <table>
+                {% if cartItems %}
+                <tr>
+                    <th>Image</th><th>Product Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th><th></th>
+                </tr>
+                {% for cartItem in cartItems %}
+                <tr>
+                    <td><img src="{{cartItem.product.picture.url}}" alt="Error"></td>
+                    <td><a href="product/{{cartItem.product.id}}">{{cartItem.product.name}}</a></td>
+                    <td>{{cartItem.quantity}}</td>
+                    <td>{{cartItem.product.price}}</td>
+                    <td>{{cartItem.TotalPrice}}</td>
+                    <td><button type="button" class="delete-btn" value="{{cartItem.product.id}}">Delete</button></td>
+                </tr>
+                {% endfor %}
+                <tr class="styledTableRow">
+                    <td colspan="2">Cart Total</td>
+                    <td colspan="4">{{cart.TotalPrice}} Taka</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <th style="height: 100px;">Cart is empty.</th>
+                </tr>
+                
+                {% endif %}
+            </table>
+
+            <div class="btnContainer">
+                <a href="javascript:(void)"><button type="button" id="confirm-order" class="btn1">Confirm Order</button></a>
+                <a href="{% url 'home' %}"><button class="btn2" type="button">Continue Shopping</button></a>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <div class="row3">
+        <div id="paypal-button-container">
+        
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/checkout.js' %}"></script>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=Ae63gRNhgGrUJ_JCehqptsySN07-aJv_-toyzYL1OaBofA9Is-QQJW2gvjF2_ADvBsTV0eveB55G_0aL&currency=USD"></script>
+    <!-- Set up a container element for the button -->
+   
+    <script>
+        var total = '{{cart.TotalPrice}}'
+        console.log('Total',total)
+
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            // This function sets up the details of the transaction, including the amount and line item details.
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: total / 100
+                }
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            // This function captures the funds from the transaction.
+            return actions.order.capture().then(function(details) {
+              // This function shows a transaction success message to your buyer.
+            //   alert('Transaction completed by ' + details.payer.name.given_name);
+            document.getElementById('form').submit()
+              
+            });
+          }
+        }).render('#paypal-button-container');
+        //This function displays Smart Payment Buttons on your web page.
+      </script>
+    {% include 'footer.html' %}
+    
+</body>
+</html>

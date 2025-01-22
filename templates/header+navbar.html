@@ -1,0 +1,224 @@
+{% load static %}
+<style>
+    .headerNavbar{
+        width: 100%;
+    }
+    .header{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 255, 217);
+        height: 85px;
+    }
+    .logoContainer{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .headerInside{
+        width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    h2.logoName{
+        color: black;
+    }
+    .searchBar{
+        border-radius: 7px;
+        width: 450px;
+        height: 45px;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+    }
+    .searchBar form{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .searchBar input[type='text']{
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        padding: 10px;
+        height: 100%;
+        font-weight: 500;
+        width: 90%;
+    }
+    .searchBar button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .searchBar button img{
+        height: 30px;
+        
+    }
+    .header-btns{
+        background-color: transparent;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        cursor: pointer;
+     
+    }
+    .header-btns p.f1{
+        margin: 3px;
+        color: black;
+        font-family: 'Poppins',sans-serif;
+        font-weight: 600;
+        font-size: 17px;
+    }
+    .header-btns p.f2{
+        margin: 3px;
+        color: black;
+        font-family: 'Poppins',sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .pcBuilder-btn{
+        width: 150px;
+        height: 35px;
+        font-weight: 600;
+        font-size: 17px;
+        cursor: pointer;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        font-family: 'Poppins',sans-serif;
+    }
+    .navbar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    }
+    .navbarInside{
+        width: 1200px;
+        
+    }
+    .navElementsContainer{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+        height: 40px;
+    }
+    .navElementsContainer a{
+        text-decoration: none;
+        cursor: pointer;
+        color: black;
+        font-family: 'Poppins',sans-serif;
+        font-weight: 600;
+    }
+    .cartBox{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color:  rgb(216, 216, 216);
+        color: black;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 45px;
+        font-weight: 600;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .cartBox:hover{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    .cartBox img{
+        height: 50%;
+    }
+</style>
+
+
+
+<div class="headerNavbar">
+    <div class="header">
+        <div class="headerInside">
+            <div class="logoContainer">
+                <a style="text-decoration: none;" href="{% url 'home' %}"><h2 class="logoName">Quantum Tech</h2></a>
+            </div>
+            <div class="searchBar">
+                <form method="GET" action="search">
+                    <input type="text" name="search" placeholder="Search" required autocomplete="off">
+                    <button><img src="{% static 'images/search.png' %}" alt="error"></button>
+                </form>
+            </div>
+            <div class="desktopDeals">
+                <button class="header-btns">
+                    <p class="f1">Desktop Deals</p>
+                    <p class="f2">Special Deals</p>
+                </button>
+            </div>
+            <div class="account">
+                {% if request.user.is_authenticated %}
+                <h4 style="margin: 5px 0 0 0;">Welcome {{request.user}}</h4>
+                <a href="{% url 'logout' %}"><h4 style="margin: 10px 0 0 0;">Logout</h4></a>
+                {% else %}
+                <a href="{% url 'signIn' %}">
+                    <button class="header-btns">
+                        <p class="f1">Account</p>
+                        <p class="f2">Register or Login</p>
+                    </button>
+                </a>
+                {% endif %}
+            </div>
+            <div >
+                <a href="{% url 'pcBuilder' %}"><button class="pcBuilder-btn">PC Builder</button></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navbar">
+        <div class="navbarInside">
+            <ol class="navElementsContainer">
+                <a href="{% url 'productPage' type='desktop' %}"><li>Desktop</li></a>
+                <a href="{% url 'productPage' type='laptop' %}"><li>Laptop</li></a>
+                <a href="{% url 'productPage' type='component' %}"><li>Component</li></a>
+                <a href="{% url 'productPage' type='monitor' %}"><li>Monitor</li></a>
+                <a href="{% url 'productPage' type='ups' %}"><li>UPS</li></a>
+                <a href="{% url 'productPage' type='tablet' %}"><li>Tablet</li></a>
+                <a href="{% url 'productPage' type='camera' %}"><li>Camera</li></a>
+                <a href="{% url 'productPage' type='security' %}"><li>Security</li></a>
+                <a href="{% url 'productPage' type='networking' %}"><li>Networking</li></a>
+                <a href="{% url 'productPage' type='software' %}"><li>Software</li></a>
+                <a href="{% url 'productPage' type='accessories' %}"><li>Accessories</li></a>
+    
+            </ol>
+        </div>
+    </div>
+</div>
+
+<a style="position: fixed;" href="{% url 'cartPage' %}">
+    <div class="cartBox">
+        <img src="{% static 'images/cart.png' %}" alt="error"><sup><sup><sup><sup><span id="cartCount"></span></sup></sup></sup></sup>
+    </div>
+    </a>
+
+
+<script type="text/javascript" src="{% static 'js/setDeviceInfo.js' %}"></script>
+<script type="text/javascript">
+    xhr = new XMLHttpRequest()
+    xhr.open('GET','/getCartCount',true)
+    xhr.onload = function(){
+        var cartCount = this.responseText
+        cartCount = JSON.parse(cartCount)['cartCount']
+        
+        document.getElementById('cartCount').innerHTML = cartCount
+    }
+    xhr.send()
+</script>

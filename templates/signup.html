@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
+    <title>Sign Up to Quantum Blog</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+    <div class="container signup">
+        <form action="" method="POST">
+            <h3>Sign Up here</h3>
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password1" placeholder="Password here" required>
+            <input type="password" name="password2" placeholder="Re-type password" required>
+            
+            <button>Sign Up</button>
+            <p>Already have an account?</p>
+            <a class="aExtend" href="{% url 'signIn' %}"><button type="button">Sign In Here</button></a>
+            {% if messages %}
+            {% for message in messages %}
+            <h4 style="color: crimson;">{{message}}</h4>
+            {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,343 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pc_builder.css' %}">
+    <title>Build your desired PC</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+
+    <div class="row1">
+        <h3 style="margin: 20px 0 0 0;">Build your desired PC</h3>
+        <div class="row1Inside">
+           
+           <div class="productCard">
+            <div class="productCardRow1"><h4>CPU</h4></div>
+            {% if pcbuilder.processor %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.processor.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.processor.name}}</div>
+                <div class="priceContainer">{{pcbuilder.processor.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="processor">Delete</button><a href="{% url 'pcBuilderSuggestion' type='processor' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/processor.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='processor' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+        
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Motherboard</h4></div>
+            {% if pcbuilder.motherboard %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.motherboard.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.motherboard.name}}</div>
+                <div class="priceContainer">{{pcbuilder.motherboard.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="motherboard">Delete</button><a href="{% url 'pcBuilderSuggestion' type='motherboard' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/motherboard.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='motherboard' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+
+           <div class="productCard">
+            <div class="productCardRow1"><h4>CPU Cooler</h4></div>
+            {% if pcbuilder.cpu_cooler %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.cpu_cooler.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.cpu_cooler.name}}</div>
+                <div class="priceContainer">{{pcbuilder.cpu_cooler.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="cpu cooler">Delete</button><a href="{% url 'pcBuilderSuggestion' type='cpu cooler' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/cpu-cooler.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='cpu cooler' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+
+           <div class="productCard">
+            <div class="productCardRow1"><h4>RAM</h4></div>
+            {% if pcbuilder.ram %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.ram.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.ram.name}}</div>
+                <div class="priceContainer">{{pcbuilder.ram.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="ram">Delete</button><a href="{% url 'pcBuilderSuggestion' type='ram' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/ram.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='ram' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+        
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Storage</h4></div>
+            {% if pcbuilder.storage %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.storage.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.storage.name}}</div>
+                <div class="priceContainer">{{pcbuilder.storage.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="storage">Delete</button><a href="{% url 'pcBuilderSuggestion' type='storage' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/ssd-drive.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='storage' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Graphics Card</h4></div>
+            {% if pcbuilder.gpu %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.gpu.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.gpu.name}}</div>
+                <div class="priceContainer">{{pcbuilder.gpu.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="gpu">Delete</button><a href="{% url 'pcBuilderSuggestion' type='graphics card' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/graphic-card.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='graphics card' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Power Supply</h4></div>
+            {% if pcbuilder.psu %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.psu.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.psu.name}}</div>
+                <div class="priceContainer">{{pcbuilder.psu.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="psu">Delete</button><a href="{% url 'pcBuilderSuggestion' type='power supply' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/power-supply.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='power supply' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+           
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Casing</h4></div>
+            {% if pcbuilder.casing %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.casing.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.casing.name}}</div>
+                <div class="priceContainer">{{pcbuilder.casing.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="casing">Delete</button><a href="{% url 'pcBuilderSuggestion' type='casing' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/casing.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='casing' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+           </div>
+
+           <div class="productCard">
+            <div class="productCardRow1"><h4>Monitor</h4></div>
+            {% if pcbuilder.monitor %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.monitor.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.monitor.name}}</div>
+                <div class="priceContainer">{{pcbuilder.monitor.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="monitor">Delete</button><a href="{% url 'pcBuilderSuggestion' type='monitor' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/monitor-screen.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='monitor' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+          </div>
+           
+
+          <div class="productCard">
+            <div class="productCardRow1"><h4>Casing Cooler</h4></div>
+            {% if pcbuilder.casingCooler %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.casingCooler.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.casingCooler.name}}</div>
+                <div class="priceContainer">{{pcbuilder.casingCooler.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="casing cooler">Delete</button><a href="{% url 'pcBuilderSuggestion' type='casing cooler' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/casing-cooler.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='casing cooler' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+          </div>
+
+
+         <div class="productCard">
+            <div class="productCardRow1"><h4>Mouse</h4></div>
+            {% if pcbuilder.mouse %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.mouse.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.mouse.name}}</div>
+                <div class="priceContainer">{{pcbuilder.motherboard.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="mouse">Delete</button><a href="{% url 'pcBuilderSuggestion' type='mouse' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/mouse.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='mouse' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+         </div>
+
+
+        <div class="productCard">
+            <div class="productCardRow1"><h4>Keyboard</h4></div>
+            {% if pcbuilder.keyboard %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{{pcbuilder.keyboard.picture.url}}" alt=""></div>
+                <div class="titleContainer">{{pcbuilder.keyboard.name}}</div>
+                <div class="priceContainer">{{pcbuilder.keyboard.price}}</div>
+                <div class="selectContainer"><button class="delete-btn" value="keyboard">Delete</button><a href="{% url 'pcBuilderSuggestion' type='keyboard' %}"><button>Re-Add</button></a></div>
+            </div>
+            {% else %}
+            <div class="productCardRow2">
+                <div class="imageContainer"><img src="{% static 'images/keyboard.png' %}" alt=""></div>
+                <div class="titleContainer"></div>
+                <div class="priceContainer"></div>
+                <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='keyboard' %}"><button>Add</button></a></div>
+            </div>
+            {% endif %}
+        </div>
+
+
+       <div class="productCard">
+        <div class="productCardRow1"><h4>Antivirus</h4></div>
+        {% if pcbuilder.antivirus %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{{pcbuilder.motherboard.picture.url}}" alt=""></div>
+            <div class="titleContainer">{{pcbuilder.antivirus.name}}</div>
+            <div class="priceContainer">{{pcbuilder.antivirus.price}}</div>
+            <div class="selectContainer"><button class="delete-btn" value="antivirus">Delete</button><a href="{% url 'pcBuilderSuggestion' type='antivirus' %}"><button>Re-Add</button></a></div>
+        </div>
+        {% else %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{% static 'images/antivirus.png' %}" alt=""></div>
+            <div class="titleContainer"></div>
+            <div class="priceContainer"></div>
+            <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='antivirus' %}"><button>Add</button></a></div>
+        </div>
+        {% endif %}
+       </div>
+
+
+      <div class="productCard">
+        <div class="productCardRow1"><h4>Headphone</h4></div>
+        {% if pcbuilder.headphone %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{{pcbuilder.headphone.picture.url}}" alt=""></div>
+            <div class="titleContainer">{{pcbuilder.headphone.name}}</div>
+            <div class="priceContainer">{{pcbuilder.headphone.price}}</div>
+            <div class="selectContainer"><button class="delete-btn" value="headphone">Delete</button><a href="{% url 'pcBuilderSuggestion' type='headphone' %}"><button>Re-Add</button></a></div>
+        </div>
+        {% else %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{% static 'images/headphone.png' %}" alt=""></div>
+            <div class="titleContainer"></div>
+            <div class="priceContainer"></div>
+            <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='headphone' %}"><button>Add</button></a></div>
+        </div>
+        {% endif %}
+      </div>
+
+
+     <div class="productCard">
+        <div class="productCardRow1"><h4>UPS</h4></div>
+        {% if pcbuilder.ups %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{{pcbuilder.ups.picture.url}}" alt=""></div>
+            <div class="titleContainer">{{pcbuilder.ups.name}}</div>
+            <div class="priceContainer">{{pcbuilder.ups.price}}</div>
+            <div class="selectContainer"><button class="delete-btn" value="ups">Delete</button><a href="{% url 'pcBuilderSuggestion' type='ups' %}"><button>Re-Add</button></a></div>
+        </div>
+        {% else %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{% static 'images/ups.png' %}" alt=""></div>
+            <div class="titleContainer"></div>
+            <div class="priceContainer"></div>
+            <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='ups' %}"><button>Add</button></a></div>
+        </div>
+        {% endif %}
+
+     </div>
+
+    <div class="productCard">
+        <div class="productCardRow1"><h4>Operating System</h4></div>
+        {% if pcbuilder.os %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{{pcbuilder.os.picture.url}}" alt=""></div>
+            <div class="titleContainer">{{pcbuilder.os.name}}</div>
+            <div class="priceContainer">{{pcbuilder.os.price}}</div>
+            <div class="selectContainer"><button class="delete-btn" value="os">Delete</button><a href="{% url 'pcBuilderSuggestion' type='os' %}"><button>Re-Add</button></a></div>
+        </div>
+        {% else %}
+        <div class="productCardRow2">
+            <div class="imageContainer"><img src="{% static 'images/os.png' %}" alt=""></div>
+            <div class="titleContainer"></div>
+            <div class="priceContainer"></div>
+            <div class="selectContainer"><a href="{% url 'pcBuilderSuggestion' type='os' %}"><button>Add</button></a></div>
+        </div>
+        {% endif %}
+    </div>
+
+
+        </div>
+    </div>
+
+
+    {% include 'footer.html' %}
+    <script type="text/javascript"> 
+        var type = `{{type}}`
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/add_pc_builder.js' %}"></script>
+</body>
+</html>

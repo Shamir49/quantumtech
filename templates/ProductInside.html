@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/productInside.css' %}">
+    <title>Buy {{product.name}}</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+
+    {% if messages %}
+    <div id="sc" class="successContainer">
+        {% for message in messages %}
+        <p style="font-weight: 600;">{{message}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <div class="row1">
+        <div class="row1Inside">
+            <div class="row1Col1">
+                <img src="{{product.picture.url}}" alt="Image not available" draggable="false">
+            </div>
+
+            <div class="row1Col2">
+                <div class="row1Col2Row1">
+                    <h3>{{product.name}}</h3>
+                    <p>Basic Information</p>
+                    <p>{{product.model}}</p>
+                    <p>{{product.feature1}}</p>
+                    <p>{{product.feature2}}</p>
+                    <p>{{product.feature3}}</p>
+                    <p>{{product.feature4}}</p>
+                    <p class="highlight">Price - {{product.price}}</p>
+                    {% if product.stock >= 1 %}
+                    <p class="highlight">Stock - In Stock</p>
+                    {% else %}
+                    <p class="highlight">Stock - out of stock</p>
+                    {% endif %}
+                </div>
+                <div class="row1Col2Row2">
+                    <button class="buy-btn" value="{{product.id}}">Buy Now</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row2">
+        <div class="row2Inside">
+            <ol class="specNav">
+                <a class="selected" href="#specs"><li>Specifications</li></a>
+                <a href="#details"><li>Details</li></a>
+                <a href="#q&a"><li>Q&A</li></a>
+                <a href="#review"><li>Review</li></a>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="row3">
+        <div class="row3Inside">
+            <a name="specs" href=""></a>
+            <table class="specTable">
+                {% for key, value in product.specs.items %}
+                <tr>
+                    <td colspan="2"><p style="color: chocolate;">{{key}}</p></td>
+                </tr>
+                {% for key2,value2 in value.items %}
+                <tr>
+                    <td>{{key2}}</td><td>{{value2|safe}}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </table>
+            
+            
+        </div>
+    </div>
+
+    <a name="details" href=""></a>
+    <div class="row4">
+        <div class="row4Inside">
+            {{product.description|safe}}
+        </div>
+    </div>
+
+    <a name="q&a" href=""></a>
+    <div class="row5">
+        <div class="row5Inside">
+            <div class="row5Row1">
+                <form id="form1" action="" method="POST">
+                    <h3>Ask a Question here</h3>
+                    {% csrf_token %}
+                    <tr> 
+                    <td>     
+                    <select style="display: none;" name="product" id="id_product">
+                      <option value="{{product.id}}" selected>{{product.name}}</option>
+                    </select>
+                     </td>
+                    </tr>
+                      <tr>
+                       
+                        <td></td>
+                          <input type="text" name="name" maxlength="300" required id="id_name" placeholder="Your Full Name">
+                        </td>
+                      </tr>
+                      <tr>
+                        
+                        <td>                 
+                          <textarea name="question" cols="40" rows="10" required id="id_question" placeholder="Write your Question"></textarea>
+                        </td>
+                      </tr>
+                      <tr style="display: none;">
+                    
+                        <td> 
+                          <textarea style="display: none;" name="answer"  cols="40" rows="10" id="id_answer" placeholder="Write an Answer"></textarea>
+                        </td>
+                      </tr>
+                    <!-- <input type="text" name="name" placeholder="Your nane" required>
+                    <textarea name="question" placeholder="Write your question here" required></textarea> -->
+                    <button id="submit-btn">Submit</button>
+                </form>
+            </div>
+            <div class="row5Row2">
+                {% if questions %}
+                {% for question in questions %}
+                <div class="questionCard">
+                    <p class="question">Q{{forloop.counter}}. {{question.name}} - {{question.question}} </p>
+                    {% if question.answer %}
+                    <p class="answer">A{{forloop.counter}}. QuantumTech ltd. - {{question.answer}}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="questionCard">
+                    <p class="question">No Question. Be the first to ask a question.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <a name="review" href=""></a>
+    <div class="row5">
+        <div class="row5Inside">
+            <div class="row5Row1">
+                <form id="form2" action="" method="POST">
+                    <h3>Add a Review here</h3>
+                    {% csrf_token %}
+                    <tr>
+                        <td>
+                      <select style="display: none;" name="product" id="id_product">
+                      <option value="{{product.id}}" selected>{{product.name}}</option>
+                    
+                    </select>     
+                        </td>
+                      </tr>              
+                      <tr>
+                        <td>
+                          <input placeholder="Your Full name" type="text" name="name" maxlength="300" required id="id_name">
+                        </td>
+                      </tr>
+                      <div>
+                        <p>Add Rating</p>
+                        <input type="radio" name="rating" id="rating1">
+                        <input type="radio" name="rating" id="rating2">
+                        <input type="radio" name="rating" id="rating3">
+                        <input type="radio" name="rating" id="rating4">
+                        <input type="radio" name="rating" id="rating5">
+                    </div>
+                         <tr>
+                        <td>
+                          <input style="display: none;" type="number" name="rating" required id="id_rating">
+                        </td>
+                      </tr>
+                    
+                      <tr>
+                        <td>    
+                          <textarea placeholder="Write your Review" name="review" cols="40" rows="10" required id="id_review"></textarea>
+                         </td>
+                      </tr>
+
+                    
+
+                    <button>Submit</button>
+                </form>
+            </div>
+            
+            <div class="row5Row2">
+                {% if reviews %}
+                {% for review in reviews %}
+                <div class="questionCard">
+                    <div class="raContainer">
+                        {% if review.rating == 1 %}
+                        &#11088;
+                        {% elif review.rating == 2 %}
+                        &#11088; &#11088;
+                        {% elif review.rating == 3 %}
+                        &#11088; &#11088; &#11088;
+                        {% elif review.rating == 4 %}
+                        &#11088; &#11088; &#11088; &#11088;
+                        {% elif review.rating == 5 %}
+                        &#11088; &#11088; &#11088; &#11088; &#11088;
+                        {% endif %}
+                    </div>
+                    <p class="question">R{{forloop.counter}}. {{review.name}} - {{review.review}} </p>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="questionCard">
+                    <p class="question">No Review. Be the first to review this product.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script type="text/javascript" src="{% static 'js/productInside.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>
