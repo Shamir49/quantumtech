@@ -1,0 +1,118 @@
+body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+.row1{
+    margin: 40px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.row2Inside{
+    border-width: 4px;
+    border-style: solid;
+    animation-name: dynamicBorderColor;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    padding: 5px;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.row2 a{
+    text-decoration: none;
+    color: black;
+}
+.featuredCategoryCard{
+    border-width: 3px;
+    border-style: solid;
+    animation-name: dynamicBorderColor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    margin: 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.featuredCategoryCard img{
+    width: 50%;
+}
+
+.row3{
+    margin: 20px 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.row3Inside{
+    padding: 10px 0;
+    border-width: 4px;
+    border-style: solid;
+    animation-name: dynamicBorderColor;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.featuredProductCard{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 5px 0;
+
+}
+.featuredProductCard img{
+    height: 40%;
+}
+.row3Inside a{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+@keyframes dynamicBorderColor{
+    0%{
+        border-color: aquamarine;
+    }
+    25%{
+        border-color: aqua;
+    }
+    50%{
+        border-color: blueviolet;
+    }
+    75%{
+        border-color: coral;
+    }
+    100%{
+        border-color: deeppink;
+    }
+}
+

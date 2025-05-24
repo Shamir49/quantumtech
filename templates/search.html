@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/productPage.css' %}">
+    <title>Search</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+    <h3 style="text-align: center;">Search results for '{{searchText}}'</h3>
+    <div class="row1">
+        <!-- <div class="sidebar">
+            <div>
+                <h3>Availability</h3>
+                <form method="GET" action="" onsubmit="SaveFormData()" id="stockForm">
+                    <input type="checkbox" id="st1" name='stock' value="In Stock"  class='stock'><button class='sv' id='sv1' type="button">In Stock</button><br>
+                    <input type="checkbox" id="st2" name='stock' value="Pre Order"  class='stock'><button class='sv' id='sv2' type="button">Pre Order</button><br>
+                    <input type="checkbox" id='st3' name='stock' value="Up Coming" class='stock'><button class='sv' id='sv3' type="button">Up Coming</button><br>
+                    <button style="display: none;" id="stock-btn">Submit</button>
+                </form>
+            </div>
+            <div>
+                <h3>Brand</h3>
+                <form>
+                    <input type="checkbox">Palit<br>
+                    <input type="checkbox">PNY<br>
+                    <input type="checkbox">Galax<br>
+                    <input type="checkbox">ASUS<br>
+                    <input type="checkbox">ZOTAC<br>
+                    <input type="checkbox">MSI<br>
+                    <input type="checkbox">GIGABYTE<br>
+                    <input type="checkbox">Sapphire<br>
+
+                </form>
+            </div>
+
+            <div>
+                <h3>Chipset</h3>
+                
+                    <form>
+                        <input type="checkbox">Intel<br>
+                        <input type="checkbox">AMD<br>
+                        <input type="checkbox">Nvidia<br>
+  
+                    </form>
+                
+                <h3>Memory</h3>
+                    <form>
+                        <input type="checkbox">2GB<br>
+                        <input type="checkbox">3GB<br>
+                        <input type="checkbox">4GB<br>
+                        <input type="checkbox">8GB<br>
+                        <input type="checkbox">10GB<br>
+                        <input type="checkbox">11GB<br>
+                        <input type="checkbox">12GB and Above<br>
+                        
+                    </form>
+                
+                
+
+
+            </div>
+
+
+            <div>
+            <h3>Memory Type</h3>
+                    <form>
+                        <input type="checkbox">GDDR5<br>
+                        <input type="checkbox">GDDR5X<br>
+                        <input type="checkbox">GDDR6<br>
+                        <input type="checkbox">GDDR6X<br>
+                        <input type="checkbox">HBM2<br>
+                        
+                    </form>
+
+            </div>
+
+            <div>
+            <h3>Max Resolution</h3>
+                <form>
+                        <input type="checkbox">1920 X 1200<br>
+                        <input type="checkbox">2560 X 1600<br>
+                        <input type="checkbox">3840 X 2160<br>
+                        <input type="checkbox">4096 X 2160<br>
+                        <input type="checkbox">5120 X 2880<br>
+                        <input type="checkbox">7680 X 4320<br>
+                        
+                </form>
+            </div>
+
+        </div> -->
+        <div class="monitorContainer">
+            {% if products %}
+            {% for product in products %}
+            <div class="monitorCard">
+                <div class="product">
+                    <a href="{% url 'productInside' id=product.id %}">
+                        <img src="{{ product.picture.url }}" alt="Not available" draggable="false">
+                    </a>
+                    
+                    <a href="{% url 'productInside' id=product.id %}"><h4>{{product.name}}</h4></a>
+                    <ol>            
+                        <li>{{product.feature1}}</li>
+                        <li>{{product.feature2}}</li>
+                        <li>{{product.feature3}}</li>
+                        <li>{{product.feature4}}</li>
+                    </ol>
+                </div>
+                    <div class="product2">
+                        {% if product.stock != 0 %}
+                        <h3>{{product.price}} Taka</h3>
+                        <button class="buy-btn" value="{{product.id}}">Buy Now</button>
+                        {% else %}
+                        <h3>{{product.price}}</h3>
+                        <button class="stock-out-btn">Out of Stock</button>
+                    {% endif %}
+                    </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="NoProductContainer">
+                <p>No Product Found</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    {% include 'footer.html' %}
+
+</body>
+</html>

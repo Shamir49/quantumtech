@@ -1,0 +1,41 @@
+<style>
+    .toast-message-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(0, 255, 64);
+    /* border: 3px solid rgb(1, 245, 225); */
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.toast-message-container h3 {
+    font-weight: 600;
+
+}
+.toast-message-container img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 50%;
+}
+</style>
+
+<div class="toast-message-container">
+    <img src="https://icons.veryicon.com/png/o/miscellaneous/batch-editor/success-38.png" alt="">
+    <h3>{{message}}</h3>
+</div>
+
+<script>
+    const toastMessageContainer = document.querySelector('.toast-message-container');
+
+    setTimeout(() => {
+    toastMessageContainer.style.display = 'none';
+}, 4000);
+
+</script>

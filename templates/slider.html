@@ -1,0 +1,96 @@
+{% load static %}
+<style>
+.sliderContainer{
+    background-color: aqua;
+    display: flex;
+    width: 400%;
+    height: 100%;
+}
+.elements{
+    height: 500px;
+    width: 1000px;
+    
+}
+.slidesMotherContainer{
+    /* border-width: 3px;
+    border-style: solid;
+    animation-name: changeBorderColor;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; */
+    border-radius: 7px;
+    margin: 20px 0 50px 0;
+    width: 1000px;
+    height: 500px;
+    overflow: hidden;
+}
+
+@keyframes changeBorderColor{
+    0% {
+        border-color: rgb(1, 255, 242);
+    }
+    25% {
+        border-color: rgb(80, 255, 188);
+    }
+    50% {
+        border-color: rgb(0, 255, 42);
+    }
+    75% {
+        border-color: rgb(255, 3, 158);
+    }
+    100% {
+        border-color: rgb(255, 196, 0);
+    }
+}
+.sliderContainer img{
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+#e1{
+    margin-left: 0;
+}
+#e1{
+    animation-name: slider;
+    animation-duration: 10s;
+    
+    animation-iteration-count: infinite;
+}
+@keyframes slider{
+    0% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -1000px;
+    }
+    50% {
+        margin-left: -2000px;
+    }
+    75%{
+        margin-left: -3000px;
+    }
+    100% {
+        margin-left: -4000px;
+    }
+
+} 
+</style>
+<div class="slidesMotherContainer">
+    <div class="sliderContainer">
+        <div class="elements" id="e1">
+            <img src="{% static 'images/elem1.jpg' %}" draggable="false">
+        </div>
+        <div class="elements" id="e2">
+            <img src="{% static 'images/elem2.png' %}" draggable="false">
+        </div>
+        <div class="elements" id="e3">
+            <img src="{% static 'images/elem3.jpg' %}" draggable="false">
+        </div>
+        <div class="elements" id="e4">
+            <img src="{% static 'images/elem4.jpg' %}" draggable="false">
+        </div>
+        <div class="elements" id="e4">
+            <img src="{% static 'images/elem5.jpg' %}" draggable="false">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <title>Welcome to Quantum Tech</title>
+</head>
+<body>
+
+    
+
+    {% include 'header+navbar.html' %}
+    
+    <!-- <h2 style="text-align: center;">Welcome to Quantum Tech</h2> -->
+
+    {% if messages %}
+    {% for message in messages %}
+    {% include 'toastComponent.html' with message=message %}
+    {% endfor %}
+    {% endif %}
+    
+
+    <div class="row1">
+        {% include 'slider.html' %}
+    </div>
+
+    <div class="row2">
+        <h2>Featured Category</h2>
+        <div class="row2Inside">
+            <a href="{% url 'productPage' type='desktop' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/desktop.png' %}" alt="Not Available">
+                    <h4>Desktop</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='laptop' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/laptop.png' %}" alt="Not Available">
+                    <h4>Laptop</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/processor.png' %}" alt="Not Available">
+                    <h4>Processor</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/graphic-card.png' %}" alt="Not Available">
+                    <h4>Graphics Card</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/motherboard.png' %}" alt="Not Available">
+                    <h4>Motherboard</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='monitor' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/monitor-screen.png' %}" alt="Not Available">
+                    <h4>Monitor</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='camera' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/camera.png' %}" alt="Not Available">
+                    <h4>Camera</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/ram.png' %}" alt="Not Available">
+                    <h4>Ram</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/ssd-drive.png' %}" alt="Not Available">
+                    <h4>SSD</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/casing.png' %}" alt="Not Available">
+                    <h4>Casing</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='component' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/power-supply.png' %}" alt="Not Available">
+                    <h4>Power Supply</h4>
+                </div>
+            </a>
+            <a href="{% url 'productPage' type='tablet' %}">
+                <div class="featuredCategoryCard">
+                    <img src="{% static 'images/tablet.png' %}" alt="Not Available">
+                    <h4>Tablet</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="row3">
+        <h2>Featured Products</h2>
+        <div class="row3Inside">
+            {% for fproduct in fproducts %}
+            <a href="{% url 'productInside' id=fproduct.id %}">
+                <div class="featuredProductCard">
+                    <img src="{{fproduct.picture.url}}" alt="not Available">
+                    <h4>{{fproduct.name}}</h4>
+                    <h4>Price - {{fproduct.price}} Tk</h4>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% include 'footer.html' %}
+</body>
+</html>

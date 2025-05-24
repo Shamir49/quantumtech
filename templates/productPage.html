@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/productPage.css' %}">
+    <title>Quantum Tech - Buy Products</title>
+</head>
+<body>
+    {% include 'header+navbar.html' %}
+    <div class="row1">
+        {% if type == 'desktop' %}
+        {% include 'desktopSidebar.html' %}
+        {% elif type == 'laptop' %}
+        {% include 'desktopSidebar.html' %}
+        {% else %}
+        {% include 'normalSidebar.html' %}
+        {% endif %}
+        <div class="monitorContainer">
+            {% if products %}
+            {% for product in products %}
+            <div class="monitorCard">
+                <div class="product">
+                    <a href="{% url 'productInside' id=product.id %}">
+                        <img src="{{ product.picture.url }}" alt="Not available" draggable="false">
+                    </a>
+                    
+                    <a href="{% url 'productInside' id=product.id %}"><h4>{{product.name}}</h4></a>
+                    <ol>            
+                        <li>{{product.feature1}}</li>
+                        <li>{{product.feature2}}</li>
+                        <li>{{product.feature3}}</li>
+                        <li>{{product.feature4}}</li>
+                    </ol>
+                </div>
+                    <div class="product2">
+                        {% if product.stock != 0 %}
+                        <h3>{{product.price}} Taka</h3>
+                        <button class="buy-btn" value="{{product.id}}">Buy Now</button>
+                        {% else %}
+                        <h3>{{product.price}}</h3>
+                        <button class="stock-out-btn">Out of Stock</button>
+                    {% endif %}
+                    </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="NoProductContainer">
+                <p>No Product Found</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/product_filter.js' %}"></script>
+</body>
+</html>

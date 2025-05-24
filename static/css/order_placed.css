@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+.container{
+    margin: 100px auto;
+    height: 400px;
+    width: 500px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

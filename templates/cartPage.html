@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+    <title>Cart - Quantum Tech</title>
+</head>
+
+<body>
+    {% include 'header+navbar.html' %}
+    <div class="row1">
+        {% if cartItems %}
+        <div class="row1Inside">
+            <table>
+
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+                {% for cartItem in cartItems %}
+                <tr>
+                    <td><img src="{{cartItem.product.picture.url}}" alt="Error"></td>
+                    <td><a href="product/{{cartItem.product.id}}">{{cartItem.product.name}}</a></td>
+                    <td>{{cartItem.quantity}}</td>
+                    <td>{{cartItem.product.price}}</td>
+                    <td>{{cartItem.TotalPrice}}</td>
+                    <td><button class="delete-btn" value="{{cartItem.product.id}}">Delete</button></td>
+                </tr>
+                {% endfor %}
+
+
+            </table>
+            <div class="btnContainer">
+                <a href="{% url 'checkout' %}"><button class="btns">Check Out</button></a>
+                <h3>Cart Total - {{cart.TotalPrice}}</h3>
+                <a href="{% url 'home' %}"><button class="btns">Continue Shopping</button></a>
+            </div>
+        </div>
+        {% else %}
+        <div class="emptyCartContainer">
+            <h3>Cart is empty.</h3>
+        </div>
+        {% endif %}
+    </div>
+    {% include 'footer.html' %}
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
+</body>
+
+</html>

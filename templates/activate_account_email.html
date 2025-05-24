@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+Hi {{user.username}},
+
+Welcome to QuantumTech! We are excited to have you on board.
+
+To get started, please verify your email address by clicking the link below:
+
+
+http://{{domain}}{% url 'activateAccount' uidb64=uid token=token %}
+
+{% endautoescape %}
