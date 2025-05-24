@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/homeSlider.css' %}">
+
+<div class="sliderContainer">
+
+    <div class="sliders-wrapper">
+
+        {% for sliderImage in slider.sliderImages.all %}
+
+        <div class="sliders slider-1"><img src="{{sliderImage.image.url}}" alt=""></div>
+
+        <!-- <div class="sliders slider-1"><img src="{% static 'images/slider-img1.webp' %}" alt=""></div>
+        <div class="sliders slider-2"><img src="{% static 'images/slider-img2.jpg' %}" alt=""></div>
+        <div class="sliders slider-3"><img src="{% static 'images/slider-img3.jpg' %}" alt=""></div>
+        <div class="sliders slider-4"><img src="{% static 'images/slider-img4.webp' %}" alt=""></div> -->
+
+        {% endfor %}
+    </div>
+
+    <div class="slider-controls">
+        <form action="">
+            {% for sliderImage in slider.sliderImages.all %}
+            {% if forloop.counter0 == 0 %}
+            <input type="radio" name="sliderIndex" value="{{forloop.counter0}}" class="radioControlsBtns" checked>
+            {% else %}
+            <input type="radio" name="sliderIndex" value="{{forloop.counter0}}" class="radioControlsBtns">
+            {% endif %}
+            {% endfor %}
+            <!-- <input type="radio" name="sliderIndex" value="1" class="radioControlsBtns">
+            <input type="radio" name="sliderIndex" value="2" class="radioControlsBtns">
+            <input type="radio" name="sliderIndex" value="3" class="radioControlsBtns"> -->
+
+        </form>
+    </div>
+
+</div>
+
+<script src="{% static 'js/homeSlider.js' %}"></script>

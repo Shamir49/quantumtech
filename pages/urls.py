@@ -4,11 +4,8 @@ urlpatterns = [
     path('',views.HomePage,name='home'),
     path('signIn',views.SignIn,name='signIn'),
     path('signUp',views.SignUp,name='signUp'),
-<<<<<<< HEAD
     path('activate-account/<str:uidb64>/<str:token>',views.VerifyEmailActivateAccount,name='activateAccount'),
     
-=======
->>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     path('logout',views.Logout,name='logout'),
     path('product/<str:id>',views.ProductInside,name='productInside'),
     path('productView/<str:type>',views.ProductPage,name='productPage'),

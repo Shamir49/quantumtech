@@ -165,3 +165,21 @@ class PCBuilder(models.Model):
 
     def __str__(self):
         return f'{self.id}'
+    
+
+
+
+
+
+class Slider(models.Model):
+    title = models.CharField(max_length=300, null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.id} - {self.title}' 
+    
+class SliderImage(models.Model):
+    slider = models.ForeignKey(Slider, on_delete=models.CASCADE, related_name='sliderImages')
+    image = models.ImageField(upload_to='sliderImage')
+
+    def __str__(self):
+        return f'{self.id} - {self.slider}'

@@ -11,6 +11,7 @@
         align-items: center;
         background-color: rgb(0, 255, 217);
         height: 85px;
+        z-index: 400;
     }
 
     .logoContainer {
@@ -128,6 +129,7 @@
         justify-content: center;
         align-items: center;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        z-index: 400;
 
     }
 
@@ -386,7 +388,7 @@
 
             <div class="search-cart-container">
                 <button class="search-toggle-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <a href=""><button class="cart-go-to-button"><i class="fa-solid fa-cart-shopping"></i></button></a>
+                <a href="{% url 'cartPage' %}"><button class="cart-go-to-button"><i class="fa-solid fa-cart-shopping"></i></button></a>
             </div>
 
         </div>
