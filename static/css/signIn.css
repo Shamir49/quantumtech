@@ -11,6 +11,7 @@ body{
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
+<<<<<<< HEAD
 
 /* CSS */
 .button-63 {
@@ -49,10 +50,13 @@ body{
   }
 }
 
+=======
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 .container{
     border-radius: 7px;
     padding: 25px 0;
     margin: 50px auto;
+<<<<<<< HEAD
     background-color: rgb(255, 255, 250);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     display: flex;
@@ -64,24 +68,38 @@ body{
     margin: 10px 0;
 }
 
+=======
+    background-color: aquamarine;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 .login{
     width: 500px;
     height: 500px;
 }
 .signup{
+<<<<<<< HEAD
     margin: 10px auto;
     width: 500px;
+=======
+    width: 550px;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     height: 700px;
 }
 .container form{
     border-radius: 7px;
+<<<<<<< HEAD
     width: 87%;
+=======
+    width: 100%;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
+<<<<<<< HEAD
 .miniCards {
     width: 100%;
     margin: 0 auto;
@@ -94,16 +112,29 @@ input[type='text'],input[type='password'],input[type='email']{
     padding: 0 10px;
     height: 37px;
     width: 100%;
+=======
+input[type='text'],input[type='password'],input[type='email']{
+    margin: 10px 0;
+    padding: 0 10px;
+    height: 40px;
+    width: 85%;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 }
 .container form button{
     cursor: pointer;
     transition: 0.3s;
+<<<<<<< HEAD
     height: 38px;
     width: 100%;
+=======
+    height: 40px;
+    width: 85%;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     border: none;
     border-radius: 4px;
     background-color: black;
     color: white;
+<<<<<<< HEAD
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
@@ -126,6 +157,13 @@ input[type='text'],input[type='password'],input[type='email']{
 .container form button:hover{
     background-color: white;
 
+=======
+    font-size: 19px;
+    font-weight: 600;
+}
+.container form button:hover{
+    background-color: white;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     color: black;
 }
 .container a{

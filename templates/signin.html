@@ -1,12 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<<<<<<< HEAD
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -14,12 +18,19 @@
     <title>Sign In to Quantum Blog</title>
 </head>
 
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
+    <title>Sign In to Quantum Blog</title>
+</head>
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 <body>
     {% include 'header+navbar.html' %}
     <div class="container login">
         <form action="" method="POST">
             {% csrf_token %}
             <h3>Sign In here</h3>
+<<<<<<< HEAD
             <div class="miniCards">
                 <label for="username">Username / Email</label>
                 <input type="text" name="username" placeholder="John Doe" required>
@@ -30,6 +41,12 @@
             </div>
             <a href="">Forgot your password?</a>
             <button class="button-63">Sign In</button>
+=======
+            <input type="text" name="username" placeholder="username or Email" required>
+            <input type="password" name="password" placeholder="Password here" required>
+            <a href="">Forgot your password?</a>
+            <button>Sign In</button>
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
             <p>Don't have an account?</p>
             <a class="aExtend" href="{% url 'signUp' %}"><button type="button">Create a new account</button></a>
             {% if messages %}
@@ -42,5 +59,8 @@
 
     {% include 'footer.html' %}
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 </html>

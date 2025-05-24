@@ -12,8 +12,12 @@ body{
     flex-direction: column;
 }
 .row1Inside{
+<<<<<<< HEAD
     max-width: 900px;
     width: 98%;
+=======
+    width: 1200px;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     margin: 50px 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -22,11 +26,18 @@ body{
 }
 .productCard{
     display: flex;
+<<<<<<< HEAD
     height: 100px;
     flex-direction: column;
     padding: 0 10px 10px 10px;
     border-bottom: 1px solid black;
     font-size: 14px;
+=======
+    height: 130px;
+    flex-direction: column;
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid black;
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 }
 
 .productCardRow1{

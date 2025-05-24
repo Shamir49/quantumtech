@@ -137,6 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
+<<<<<<< HEAD
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -150,3 +151,6 @@ EMAIL_USE_TLS = True
 PASSWORD_RESET_TIMEOUT = 144000
 
 
+=======
+}
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c

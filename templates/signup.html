@@ -16,6 +16,7 @@
         <form action="" method="POST">
             <h3>Sign Up here</h3>
             {% csrf_token %}
+<<<<<<< HEAD
             <div class="miniCards">
                 <label for="name">Full Name</label>
                 <input type="text" name="name" placeholder="John Doe" required>
@@ -38,6 +39,15 @@
            </div>
             
             <button class="button-63">Sign Up</button>
+=======
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password1" placeholder="Password here" required>
+            <input type="password" name="password2" placeholder="Re-type password" required>
+            
+            <button>Sign Up</button>
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
             <p>Already have an account?</p>
             <a class="aExtend" href="{% url 'signIn' %}"><button type="button">Sign In Here</button></a>
             {% if messages %}

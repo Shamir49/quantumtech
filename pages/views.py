@@ -7,6 +7,7 @@ from pages.forms import *
 from django.http import JsonResponse
 import json
 from pages.utility import getCartCount, processFilter
+<<<<<<< HEAD
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
@@ -35,6 +36,10 @@ def ActivateAccount(request, user, toEmail):
     
 
 
+=======
+# Create your views here.
+
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
 def SearchPage(request):
     search = request.GET.get('search')
 
@@ -69,7 +74,10 @@ def SignIn(request):
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
+<<<<<<< HEAD
             messages.success(request,'Logged in successfully!')
+=======
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
             return redirect('/')
         else:
             messages.error(request,'Invalid credentials!')
@@ -94,6 +102,7 @@ def SignUp(request):
             else:
                 user = User.objects.create_user(first_name=name,username=username,email=email,password=password1)
                 customer = Customer.objects.create(user=user,email=email,name=name)
+<<<<<<< HEAD
                 user.is_active = False
 
                 if user is not None:
@@ -102,12 +111,19 @@ def SignUp(request):
 
                     ActivateAccount(request, user, email)
 
+=======
+                if user is not None:
+                    user.save()
+                    customer.save()
+                    auth.login(request,user)
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
                     return redirect('/')
                 
     cartCount = getCartCount(request)
     return render(request,'signup.html',{'cartCount':cartCount})
 
 
+<<<<<<< HEAD
 
 def VerifyEmailActivateAccount(request, uidb64, token):
 
@@ -134,6 +150,10 @@ def VerifyEmailActivateAccount(request, uidb64, token):
 def Logout(request):
     auth.logout(request)
     messages.success(request,'Logged out successfully!')
+=======
+def Logout(request):
+    auth.logout(request)
+>>>>>>> 7b71eca4f662bc8b1eb21d69a32832a66e320c7c
     return redirect('/')
 
 def ProductPage(request,type):
