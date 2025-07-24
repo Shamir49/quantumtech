@@ -1,59 +1,152 @@
-{% load static %}
 <style>
-    .footer{
+    .footer {
         background-color: rgb(0, 255, 217);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+        color: #000000;
+        padding: 40px 20px 20px;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
     }
-    .footerInside{
-        width: 1200px;
+
+    .footer-container {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
+        max-width: 1200px;
+        margin: auto;
     }
-    .footerInside ol{
-        width: auto;
+
+    .footer-about,
+    .footer-links,
+    .footer-social,
+    .footer-newsletter {
+        flex: 1 1 200px;
+        margin: 20px;
+    }
+
+    .footer h2,
+    .footer h3 {
+        color: #000000;
+    }
+
+    .footer-links ul {
         list-style: none;
-        display: flex;
-        flex-direction: row;
-        
+        padding: 0;
     }
-    .footerInside ol a{
-        margin: 15px;
+
+    .footer-links ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul li a {
+        color: #1b1b1b;
         text-decoration: none;
-        font-size: 19px;
-        color: black;
     }
-    .backToTop{
-        width: 130px;
-        border: 1px solid rgb(122, 122, 122);
+
+    .footer-links ul li a:hover {
+        color: #00e0d0;
+    }
+
+    .social-icons a {
+        margin-right: 15px;
+        font-size: 20px;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        color: #ffffff;
+    }
+
+    .footer-newsletter form {
         display: flex;
-        border-radius: 20px;
-        padding: 10px 15px;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer-newsletter input {
+
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .footer-newsletter button {
+        padding: 10px;
+        background-color: #00e0d0;
+        border: none;
+        border-radius: 5px;
+        color: #101820;
+        font-weight: bold;
         cursor: pointer;
-        background-color: transparent;
+    }
+
+    .footer-newsletter button:hover {
+        background-color: #00c2b2;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        border-top: 1px solid #333;
+        padding-top: 15px;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-about,
+        .footer-links,
+        .footer-social,
+        .footer-newsletter {
+            margin: 10px 0;
+        }
     }
 </style>
-<div class="footer">
-    <div class="footerInside">
-        <ol>
-            <li>&copy; 2023 All rights reserved</li>
-        </ol>
-        <h2>Follow us on</h2>
-        <ol>
-           
-            <a href="https://www.facebook.com/introvert.boy.33/"><img src="{% static 'images/facebook.png' %}"></a>
-            <a href="https://www.instagram.com/lonely.ashes490/"><img src="{% static 'images/instagram.png' %}"></a>
-            <a href=""><img src="{% static 'images/youtube.png' %}"></a>
 
-        </ol>
-        <ol>
-            <li><a href="#top"><button class="backToTop"><img src="{% static 'images/upload.png' %}"> Back to top</button></a></li>
-        </ol>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h2>Quantum Tech</h2>
+            <p>Your one-stop destination for high-performance electronics & accessories.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">PC Builder</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
     </div>
-</div>
+    <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Quantum Tech. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
